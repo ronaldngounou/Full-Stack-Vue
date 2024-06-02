@@ -1,10 +1,26 @@
 <template>
-    <h1>Product Detail View</h1>
+   <div class = "img-wrap">
+        <img :src="product.imageName" />
+   </div>
+
+   <div class = "product-details">
+        <h1>{{ product.name }}</h1>
+        <h3 class = "price"> {{ product.price }} </h3>
+        <button class = "add-to-cart">Add to cart</button>
+   </div>
+
 </template>
 
 
 <script>
+    import {products} from "@/temp-data.js";
+
     export default {
         name: 'ProductDetailView',
+        data(){
+            return {
+                product: products.find(product => product.it === this.$route.params.id)
+            }
+        }
     }
 </script>
